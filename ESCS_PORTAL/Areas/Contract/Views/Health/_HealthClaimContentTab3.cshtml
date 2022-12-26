@@ -1,0 +1,638 @@
+﻿<style>
+    input:not([type="checkbox"]) {
+        background-color: #ffffff !important;
+    }
+
+    .divActived {
+        background-color: var(--mdb-gray-100);
+    }
+</style>
+
+<div id="divThemHoSoNguoi" class="card h-100 shadow">
+    <div class="card-header d-flex flex-nowrap gap-3 pe-3">
+        <a href="javascript:_multitabService.showTabByIndex(2);"><i class="fas fa-chevron-left me-2"></i>Quay lại</a>
+        <button type="button" class="btn-close ms-auto" onclick="_multitabService.showTabByIndex(0);UpdatePageTitle(PAGE_TITLE);"></button>
+    </div>
+    <div class="card-body overflow-auto">
+        <form name="frmThongTinLienHe" novalidate="novalidate" method="post">
+            <input type="hidden" name="so_hs" value="">
+                <div class="container-fluid">
+                    <div class="row gy-3">
+                        <div class="col-12">
+                            <h4 class="text-muted">Thông tin người liên hệ</h4>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       value="option1"
+                                       id="chkThamGiaLienHe" />
+                                <label class="form-check-label" for="chkThamGiaLienHe">Người được bảo hiểm là người liên hệ</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       class="form-control"
+                                       required=""
+                                       maxlength="100"
+                                       name="nguoi_lh"
+                                       placeholder="VD: Nguyễn Văn A" />
+                                <label class="form-label _required">Họ và tên</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <select class="select" name="nguoi_lhla" id="nguoi_lhla" required>
+                                @*<option value="">Chọn mối quan hệ</option>*@
+                            </select>
+                            <label class="_required form-label select-label" for="nguoi_lhla">Mối quan hệ</label>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="form-outline">
+                                <input type="text"
+                                       fn-validate="validatePhoneControl"
+                                       autocomplete="off"
+                                       class="form-control phone"
+                                       name="dthoai_nguoi_lh"
+                                       placeholder="VD: 0972xxxxxx"
+                                       im-insert="true" />
+                                <label class="form-label">Điện thoại</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="form-outline">
+                                <input type="text"
+                                       fn-validate="validateEmailControl"
+                                       autocomplete="off"
+                                       class="form-control email-inputmask"
+                                       maxlength="100"
+                                       name="email_nguoi_lh"
+                                       placeholder="VD: mail@escs.vn" />
+                                <label class="form-label">Email</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <h4 class="text-muted">Thông tin người thông báo</h4>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input"
+                                       type="checkbox"
+                                       value="option1"
+                                       id="chkThamGiaThongBao" />
+                                <label class="form-check-label" for="chkThamGiaThongBao">Người được bảo hiểm là người thông báo</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-4">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       class="form-control"
+                                       required=""
+                                       maxlength="100"
+                                       name="nguoi_tb"
+                                       placeholder="VD: Nguyễn Văn A" />
+                                <label class="form-label _required">Họ và tên</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       fn-validate="validatePhoneControl"
+                                       class="form-control phone"
+                                       name="dthoai_nguoi_tb"
+                                       placeholder="VD: 0972xxxxxx"
+                                       im-insert="true" />
+                                <label class="form-label">Điện thoại</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       fn-validate="validateEmailControl"
+                                       class="form-control email-inputmask"
+                                       maxlength="100"
+                                       name="email_nguoi_tb"
+                                       placeholder="VD: mail@escs.vn" />
+                                <label class="form-label">Email</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h4 class="text-muted">Thông tin lần khám</h4>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <select class="select" required
+                                    id="nhom_nguyen_nhan"
+                                    name="nhom_nguyen_nhan"></select>
+                            <label class="form-label select-label _required">Nhóm nguyên nhân</label>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                        <select class="select" required
+                                    id="hinh_thuc"
+                                    name="hinh_thuc"></select>
+                            <label class="form-label select-label _required">Hình thức điều trị</label>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-outline datepicker"
+                                 data-mdb-inline="true"
+                                 data-mdb-format="dd/mm/yyyy">
+                                <input type="text"
+                                       required
+                                       class="form-control"
+                                       name="ngay_vv" />
+                                <label class="form-label _required">Ngày vào viện</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-outline datepicker"
+                                 data-mdb-inline="true"
+                                 data-mdb-format="dd/mm/yyyy">
+                                <input type="text"
+                                       required
+                                       class="form-control"
+                                       name="ngay_rv" />
+                                <label class="form-label _required">Ngày ra viện</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 d-none tai_nan">
+                            <div class="form-outline datepicker"
+                                 data-mdb-inline="true"
+                                 data-mdb-format="dd/mm/yyyy">
+                                <input type="text" class="form-control" name="ngay_xr" />
+                                <label class="form-label">Ngày xảy ra</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 d-none tai_nan">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       class="form-control"
+                                       maxlength="100"
+                                       name="noi_xr"
+                                       placeholder="Nơi xảy ra" />
+                                <label class="form-label">Nơi xảy ra</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 d-none tai_nan">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       class="form-control"
+                                       maxlength="100"
+                                       name="nguyen_nhan_tnan"
+                                       placeholder="Nguyên nhân" />
+                                <label class="form-label">Nguyên nhân</label>
+                            </div>
+                        </div>
+                    <div class="col-12 col-lg-6 d-none tai_nan">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       class="form-control"
+                                       maxlength="100"
+                                       name="hau_qua_ct"
+                                       placeholder="Hậu quả" />
+                                <label class="form-label">Hậu quả</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <select class="select"
+                                    id="tinh_thanh"
+                                    name="tinh_thanh"></select>
+                            <label class="form-label select-label">Chọn tỉnh thành</label>
+                        </div>
+                        <div class="col-12">
+                            <select class="select"
+                                    id="benh_vien"
+                                    name="benh_vien"
+                                    required></select>
+                            <label class="form-label select-label _required">Cơ sở y tế</label>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-outline">
+                                <input type="text"
+                                       autocomplete="off"
+                                       required
+                                       class="form-control email-inputmask"
+                                       maxlength="100"
+                                       name="chan_doan"
+                                       placeholder="Chẩn đoán" />
+
+                                <label class="form-label _required">Chẩn đoán bệnh</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h4 class="text-muted">Thông tin thụ hưởng bảo hiểm</h4>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="form-outline">
+                                <input type="text"
+                                       required
+                                       autocomplete="off"
+                                       class="form-control"
+                                       maxlength="100"
+                                       name="thu_huong_ten"
+                                       placeholder="Tên người thụ hưởng" />
+                                <label class="form-label _required">Tên người thụ hưởng</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="form-outline">
+                                <input type="text"
+                                       required
+                                       autocomplete="off"
+                                       class="form-control"
+                                       maxlength="100"
+                                       name="thu_huong_tk"
+                                       placeholder="Số tài khoản thụ hưởng" />
+                                <label class="form-label _required">Số tài khoản</label>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <select class="select"
+                                    id="thu_huong_ngan_hang"
+                                    name="thu_huong_ngan_hang"></select>
+                            <label class="form-label select-label">Ngân hàng thụ hưởng</label>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <select class="select"
+                                    id="thu_huong_cn_ngan_hang"
+                                    name="thu_huong_cn_ngan_hang"></select>
+                            <label class="form-label select-label">Chi nhánh ngân hàng thụ hưởng</label>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-outline">
+                                <input type="number"
+                                       required
+                                       autocomplete="off"
+                                       class="form-control"
+                                       maxlength="100"
+                                       name="tien_yc" />
+                                <label class="form-label _required">Số tiền yêu cầu</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="card-footer d-flex">
+        <button class="btn btn-primary ms-auto" onclick="moHSBT() ">mở hồ sơ</button>
+    </div>
+</div>
+
+@*<div id="divThemHoSoNguoi" class="card h-100 shadow d-none">
+    <div class="card-header d-flex flex-nowrap gap-3 pe-3">
+        <a href="javascript:_multitabService.showTabByIndex(2);"><i class="fas fa-chevron-left me-2"></i>Quay lại</a>
+        <button type="button" class="btn-close ms-auto" onclick="_multitabService.showTabByIndex(0);UpdatePageTitle(PAGE_TITLE);"></button>
+    </div>
+    <div class="card-body d-flex flex-column gap-2 overflow-auto pt-3">
+        <form name="frmThongTinLienHe" novalidate="novalidate" method="post">
+            <input type="hidden" name="so_hs" value="">
+            <div class="row">
+                <div class="col-12 col-md-4 col-xxl-4" style="border-right:1px solid #00000014; padding:0px 20px 0px 20px;" id="khaiBaoHoSoBTTab1">
+
+                    <div class="row card-body" style="height:55vh; overflow:auto">
+                        <div class="row gy-3">
+                            <div class="col-12">
+                                <h4 class="text-muted">Thông tin người liên hệ</h4>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="option1"
+                                           id="chkThamGiaLienHe" />
+                                    <label class="form-check-label" for="chkThamGiaLienHe">Người được bảo hiểm là người liên hệ</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           class="form-control"
+                                           required=""
+                                           maxlength="100"
+                                           name="nguoi_lh"
+                                           placeholder="VD: Nguyễn Văn A" />
+                                    <label class="form-label _required">Họ và tên</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <select class="select"
+                                        name="nguoi_lhla"
+                                        id="nguoi_lhla">
+                                    <option value="">Chọn mối quan hệ</option>
+                                    <option value="BO">Bố</option>
+                                    <option value="ME">Mẹ</option>
+                                    <option value="BAN_THAN">Bản thân</option>
+                                    <option value="KHAC">Khác (Anh/Chị/Em...)</option>
+                                </select>
+                                <label class="_required form-label select-label">Mối quan hệ</label>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           fn-validate="validatePhoneControl"
+                                           autocomplete="off"
+                                           class="form-control phone"
+                                           name="dthoai_nguoi_lh"
+                                           placeholder="VD: 0972xxxxxx"
+                                           im-insert="true" />
+                                    <label class="form-label">Điện thoại</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           fn-validate="validateEmailControl"
+                                           autocomplete="off"
+                                           class="form-control email-inputmask"
+                                           maxlength="100"
+                                           name="email_nguoi_lh"
+                                           placeholder="VD: mail@escs.vn" />
+                                    <label class="form-label">Email</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <h4 class="text-muted">Thông tin người thông báo</h4>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           value="option1"
+                                           id="chkThamGiaThongBao" />
+                                    <label class="form-check-label"
+                                           for="chkThamGiaThongBao">Người được bảo hiểm là người thông báo</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           class="form-control"
+                                           required=""
+                                           maxlength="100"
+                                           name="nguoi_tb"
+                                           placeholder="VD: Nguyễn Văn A" />
+                                    <label class="form-label _required">Họ và tên</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           fn-validate="validatePhoneControl"
+                                           class="form-control phone"
+                                           name="dthoai_nguoi_tb"
+                                           placeholder="VD: 0972xxxxxx"
+                                           im-insert="true" />
+                                    <label class="form-label">Điện thoại</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           fn-validate="validateEmailControl"
+                                           class="form-control email-inputmask"
+                                           maxlength="100"
+                                           name="email_nguoi_tb"
+                                           placeholder="VD: mail@escs.vn" />
+                                    <label class="form-label">Email</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row card-footer mt-3">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-md btn-primary btn-tab-1" onclick="OnTiepTheo('tab_1')" style="float:right">
+                                Tiếp theo <i class="fas fa-chevron-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 col-xxl-4" style="border-right:1px solid #00000014; padding:0px 20px 0px 20px" id="khaiBaoHoSoBTTab2">
+
+                    <div class="row card-body" style="height:55vh; overflow:auto">
+                        <div class="row gy-3">
+                            <div class="col-12">
+                                <h4 class="text-muted">Thông tin lần khám</h4>
+                            </div>
+
+                            <div class="col-12 col-lg-6">
+                                <select class="select"
+                                        id="nhom_nguyen_nhan"
+                                        name="nhom_nguyen_nhan"></select>
+                                <label class="form-label select-label _required">Nhóm nguyên nhân</label>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <select class="select"
+                                        id="hinh_thuc"
+                                        name="hinh_thuc"
+                                        required></select>
+                                <label class="form-label select-label _required">Hình thức điều trị</label>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-outline datepicker"
+                                     data-mdb-inline="true"
+                                     data-mdb-format="dd/mm/yyyy">
+                                    <input type="text"
+                                           required
+                                           class="form-control"
+                                           name="ngay_vv" />
+                                    <label class="form-label _required">Ngày vào viện</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-outline datepicker"
+                                     data-mdb-inline="true"
+                                     data-mdb-format="dd/mm/yyyy">
+                                    <input type="text"
+                                           required
+                                           class="form-control"
+                                           name="ngay_rv" />
+                                    <label class="form-label _required">Ngày ra viện</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 d-none tai_nan">
+                                <div class="form-outline datepicker"
+                                     data-mdb-inline="true"
+                                     data-mdb-format="dd/mm/yyyy">
+                                    <input type="text"
+                                           class="form-control"
+                                           name="ngay_xr" />
+                                    <label class="form-label">Ngày xảy ra</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-6 d-none tai_nan">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           class="form-control"
+                                           maxlength="100"
+                                           name="noi_xr"
+                                           placeholder="Nơi xảy ra" />
+                                    <label class="form-label">Nơi xảy ra</label>
+                                </div>
+                            </div>
+                            <div class="col-12 d-none tai_nan">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           class="form-control"
+                                           maxlength="100"
+                                           name="nguyen_nhan_tnan"
+                                           placeholder="Nguyên nhân" />
+                                    <label class="form-label">Nguyên nhân</label>
+                                </div>
+                            </div>
+                            <div class="col-12 d-none tai_nan">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           class="form-control"
+                                           maxlength="100"
+                                           name="hau_qua_ct"
+                                           placeholder="Hậu quả" />
+                                    <label class="form-label">Hậu quả</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <select class="select"
+                                        id="tinh_thanh"
+                                        name="tinh_thanh"></select>
+                                <label class="form-label select-label">Chọn tỉnh thành</label>
+                            </div>
+                            <div class="col-12">
+                                <select class="select"
+                                        id="benh_vien"
+                                        name="benh_vien"
+                                        required></select>
+                                <label class="form-label select-label _required">Cơ sở y tế</label>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           autocomplete="off"
+                                           required
+                                           class="form-control email-inputmask"
+                                           maxlength="100"
+                                           name="chan_doan"
+                                           placeholder="Chẩn đoán" />
+
+                                    <label class="form-label _required">Chẩn đoán bệnh</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row card-footer mt-3">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-md btn-primary btn-tab-2" onclick="OnQuayVe('tab_2')" style="float: left">
+                                <i class="fas fa-chevron-left"></i> Quay về
+                            </button>
+                            <button type="button" class="btn btn-md btn-primary btn-tab-2" onclick="OnTiepTheo('tab_2')" style="float: right">
+                                Tiếp theo <i class="fas fa-chevron-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4 col-xxl-4" style="padding:0px 20px 0px 20px" id="khaiBaoHoSoBTTab3">
+
+                    <div class="row card-body" style="height:55vh; overflow:auto">
+                        <div class="row gy-3">
+                            <div class="col-12">
+                                <h4 class="text-muted">Thông tin thụ hưởng bảo hiểm</h4>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           required
+                                           autocomplete="off"
+                                           class="form-control"
+                                           maxlength="100"
+                                           name="thu_huong_ten"
+                                           placeholder="Tên người thụ hưởng" />
+                                    <label class="form-label _required">Họ tên người thụ hưởng</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="text"
+                                           required
+                                           autocomplete="off"
+                                           class="form-control"
+                                           maxlength="100"
+                                           name="thu_huong_tk"
+                                           placeholder="Số tài khoản thụ hưởng" />
+                                    <label class="form-label _required">Số tài khoản</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <select class="select"
+                                        id="thu_huong_ngan_hang"
+                                        name="thu_huong_ngan_hang"></select>
+                                <label class="form-label select-label">Ngân hàng thụ hưởng</label>
+                            </div>
+                            <div class="col-12">
+                                <select class="select"
+                                        id="thu_huong_cn_ngan_hang"
+                                        name="thu_huong_cn_ngan_hang"></select>
+                                <label class="form-label select-label">Chi nhánh ngân hàng thụ hưởng</label>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="number"
+                                           required
+                                           autocomplete="off"
+                                           class="form-control"
+                                           maxlength="100"
+                                           name="tien_yc" />
+                                    <label class="form-label _required">Số tiền yêu cầu</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row card-footer mt-3">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-md btn-primary btn-tab-3" onclick="OnQuayVe('tab_3')" style="float: left">
+                                <i class="fas fa-chevron-left"></i> Quay về
+                            </button>
+                            <button type="button" class="btn btn-md btn-primary btn-tab-3" onclick="OnTiepTheo('tab_3')" style="float: right">
+                                Mở hồ sơ <i class="fas fa-chevron-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>*@

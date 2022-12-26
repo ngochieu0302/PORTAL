@@ -1,0 +1,9 @@
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\bin\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.deps.json
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\bin\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.dll
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\bin\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.pdb
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\obj\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.csprojAssemblyReference.cache
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\obj\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.AssemblyInfoInputs.cache
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\obj\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.AssemblyInfo.cs
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\obj\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.csproj.CoreCompileInputs.cache
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\obj\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.dll
+D:\project\ESCS_PORTAL\ESCS_PORTAL.COMMON\obj\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.pdb

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>2ba99bd6-68d7-43f9-99be-b857d65f8379</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	 <PreserveCompilationContext>true</PreserveCompilationContext>
+	<RazorCompileOnPublish>false</RazorCompileOnPublish>
+	<CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="DeviceDetector.NET.NetCore" Version="3.9.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.27" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="3.6.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ESCS_PORTAL.BUS\ESCS_PORTAL.BUS.csproj" />
+    <ProjectReference Include="..\ESCS_PORTAL.COMMON\ESCS_PORTAL.COMMON.csproj" />
+    <ProjectReference Include="..\ESCS_PORTAL.DAL\ESCS_PORTAL.DAL.csproj" />
+    <ProjectReference Include="..\ESCS_PORTAL.MODEL\ESCS_PORTAL.MODEL.csproj" />
+  </ItemGroup>
+
+</Project>

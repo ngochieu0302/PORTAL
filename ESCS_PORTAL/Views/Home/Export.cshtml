@@ -1,0 +1,162 @@
+﻿@{
+    ViewData["Title"] = "Xuất báo cáo";
+}
+
+<div class="h-100" style="background-color: #eef5f9">
+        <div class="container pt-5 h-100">
+            <div class="row d-flex justify-content-center h-100 pt-md-5">
+                <div class="col-12 col-lg-9 col-xl-8">
+                    <div class="card shadow-2-strong">
+                        <div class="card-body text-end">
+                            <!-- Pills navs -->
+                            <ul class="nav nav-pills mb-3" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link py-3 active"
+                                   id="BCSK"
+                                   data-mdb-toggle="pill"
+                                   href="#BCSK-content"
+                                   role="tab"
+                                   aria-selected="true">Sức khỏe</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link py-3"
+                                   id="BCXE"
+                                   data-mdb-toggle="pill"
+                                   href="#BCXE-content"
+                                   role="tab"
+                                   aria-selected="false">Xe cơ giới</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active"
+                                 id="BCSK-content"
+                                 role="tabpanel">
+                                    <div class="container-fluid px-0">
+                                        <form class="row g-3" name="frmBaoCaoNG" method="post">
+                                            <div class="col-12">
+                                                <select class="select" id="selectBieuMauNG" name="mau_bao_cao"></select>
+                                                <label class="form-label select-label">Biểu mẫu báo cáo</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <select class="select" id="selectTieuChiNgayNG" name="ngay_tkiem"></select>
+                                                <label class="form-label select-label">Tiêu chí ngày</label>
+                                            </div>
+                                            <div class="col-6 col-md-4">
+                                                <div class="form-outline datepicker" data-mdb-inline="true" data-mdb-format="dd/mm/yyyy">
+                                                    <input type="text" class="form-control" value-format="number" name="ngayd" />
+                                                    <label class="form-label">Từ ngày</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-4">
+                                                <div class="form-outline datepicker" data-mdb-inline="true" data-mdb-format="dd/mm/yyyy">
+                                                    <input type="text" class="form-control" value-format="number" name="ngayc" />
+                                                    <label class="form-label">Đến ngày</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 d-none">
+                                                <select class="select" id="selectDoiTacNG" name="ma_doi_tac"></select>
+                                                <label class="form-label select-label">Đối tác</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <select class="select" id="selectChiNhanhNG" name="ma_chi_nhanh" multiple></select>
+                                                <label class="form-label select-label">Chi nhánh</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <select class="select" id="selectChonBenhVienNG" name="benh_vien"></select>
+                                                <label class="form-label select-label">Chọn bệnh viện</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectLoaiHinhBaoHiemNG" name="san_pham"></select>
+                                                <label class="form-label select-label">Loại hình bảo hiểm</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectTrangThaiHoSoNG" name="trang_thai"></select>
+                                                <label class="form-label select-label">Trạng thái hồ sơ</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectNguyenNhanDieuTriNG" name="nhom_nguyen_nhan"></select>
+                                                <label class="form-label select-label">Nguyên nhân điều trị</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectHinhThucDieuTriNG" name="hinh_thuc_dtri">
+                                                </select>
+                                                <label class="form-label select-label">Hình thức điều trị</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-lg btn-primary" onclick="xuatBCNG()">
+                                                    Xuất báo cáo
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="BCXE-content" role="tabpanel">
+                                    <div class="container-fluid px-0">
+                                        <form class="row g-3" name="frmBaoCaoXE" method="post">
+                                            <div class="col-12">
+                                                <select class="select" id="selectBieuMauXE" name="mau_bao_cao"></select>
+                                                <label class="form-label select-label">Biểu mẫu báo cáo</label>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <select class="select" id="selectTieuChiNgayXE" name="ngay_tkiem"></select>
+                                                <label class="form-label select-label">Tiêu chí ngày</label>
+                                            </div>
+                                            <div class="col-6 col-md-4">
+                                                <div class="form-outline datepicker" data-mdb-inline="true" data-mdb-format="dd/mm/yyyy">
+                                                    <input type="text" class="form-control" value-format="number" name="ngayd" />
+                                                    <label class="form-label">Từ ngày</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-4">
+                                                <div class="form-outline datepicker" data-mdb-inline="true" data-mdb-format="dd/mm/yyyy">
+                                                    <input type="text" class="form-control" value-format="number" name="ngayc" />
+                                                    <label class="form-label">Đến ngày</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6 d-none">
+                                                <select class="select" id="selectDoiTacXE" name="ma_doi_tac"></select>
+                                                <label class="form-label select-label">Đối tác</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <select class="select" id="selectChiNhanhXE" name="ma_chi_nhanh" multiple></select>
+                                                <label class="form-label select-label">Chi nhánh</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectLoaiHinhBaoHiemXE" name="san_pham"></select>
+                                                <label class="form-label select-label">Loại hình bảo hiểm</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectTrangThaiHoSoXE" name="trang_thai"></select>
+                                                <label class="form-label select-label">Trạng thái hồ sơ</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectNguyenNhanTaiNanXE" name="nhom_nguyen_nhan"></select>
+                                                <label class="form-label select-label">Nguyên nhân tai nạn</label>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <select class="select" id="selectNguonKhaiBaoXE" name="nguon"></select>
+                                                <label class="form-label select-label">Nguồn khai báo</label>
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-lg btn-primary" onclick="xuatBCXE()">
+                                                    Xuất báo cáo
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <script src="~/js/app/Admin/service/PartnerListService.js" asp-append-version="true"></script>
+    <script src="~/js/app/Admin/service/BranchListService.js" asp-append-version="true"></script>
+    <script src="~/js/app/Admin/service/PrintedService.js" asp-append-version="true"></script>
+    <script src="~/js/app/Export/service/ExportService.js" asp-append-version="true"></script>
+    <script src="~/js/app/Export/Export.js" asp-append-version="true"></script>
+}

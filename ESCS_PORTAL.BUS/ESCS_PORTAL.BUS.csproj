@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\LogRequestService.cs" />
+    <Compile Remove="Services\MongoDBService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DeviceDetector.NET.NetCore" Version="3.9.2.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
+    <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ESCS\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ESCS_PORTAL.COMMON\ESCS_PORTAL.COMMON.csproj" />
+    <ProjectReference Include="..\ESCS_PORTAL.DAL\ESCS_PORTAL.DAL.csproj" />
+    <ProjectReference Include="..\ESCS_PORTAL.MODEL\ESCS_PORTAL.MODEL.csproj" />
+  </ItemGroup>
+
+</Project>

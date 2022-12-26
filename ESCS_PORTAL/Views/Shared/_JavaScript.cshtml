@@ -1,0 +1,76 @@
+﻿<script src="~/lib/jquery/jquery.min.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-form-serializer/jQuery-form-serializer.min.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-serialize-object/jquery.serialize-object.min.js" asp-append-version="true"></script>
+
+<script src="~/lib/font-awesome/js/all.min.js" asp-append-version="true"></script>
+<script src="~/lib/mdb/js/mdb.min.js" asp-append-version="true"></script>
+<script src="~/lib/mdb/plugins/js/all.min.js" asp-append-version="true"></script>
+<script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
+<script src="~/lib/toastr/build/toastr.min.js" asp-append-version="true"></script>
+<script src="~/lib/sweetalert2/dist/sweetalert2.js" asp-append-version="true"></script>
+<script src="~/lib/viewerjs/viewer.js" asp-append-version="true"></script>
+<script src="~/lib/tabulator/js/tabulator.js" asp-append-version="true"></script>
+<script src="~/lib/lodash/4.17.15-npm/full.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/UI.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/SelectService.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/DatatableService.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/AlertService.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/LoadingService.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/ViewerService.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/PaginationService.js" asp-append-version="true"></script>
+<script src="~/js/common/PortalJS/MultitabService.js" asp-append-version="true"></script>
+
+<script src="~/js/common/Service.js" asp-append-version="true"></script>
+<script src="~/js/common/ESExtensions.js" asp-append-version="true"></script>
+<script src="~/js/common/ESCheck.js" asp-append-version="true"></script>
+<script src="~/js/common/ESUtil.js" asp-append-version="true"></script>
+<script src="~/js/common/ESConstants.js" asp-append-version="true"></script>
+<script src="~/js/common/ESStorage.js" asp-append-version="true"></script>
+<script src="~/js/common/ESLoading.js" asp-append-version="true"></script>
+<script src="~/js/common/ESChat.js" asp-append-version="true"></script>
+<script src="~/js/common/ESSendEmail.js" asp-append-version="true"></script>
+
+<script src="~/js/common/NavTabService.js" asp-append-version="true"></script>
+<script src="~/js/common/NotifyService.js" asp-append-version="true"></script>
+<script src="~/js/common/ButtonService.js" asp-append-version="true"></script>
+<script src="~/js/common/ModalService.js" asp-append-version="true"></script>
+<script src="~/js/common/FormService.js" asp-append-version="true"></script>
+<script src="~/js/app/CommonService.js" asp-append-version="true"></script>
+@*<script src="~/js/app/ModalBaoCaoService.js" asp-append-version="true"></script>*@
+<script src="~/js/app/ModalDocumentService.js" asp-append-version="true"></script>
+<script src="~/js/app/ModalPreviewFileService.js" asp-append-version="true"></script>
+<script src="~/js/app/ModalXemQRCode.js" asp-append-version="true"></script>
+<script src="~/js/app.js" asp-append-version="true"></script>
+<script>
+    $(document).on('focusout', 'input.number[type=text]', function () {
+        var $input = $(this);
+        if ($input.val() == "") {
+            $input.val("0");
+        }
+    }).on('focus', 'input.number[type=text]', function () {
+        var $input = $(this);
+        if ($input.val() == "0") {
+            $input.val("");
+        }
+    });
+
+    $(document).on('focusout', 'input.decimal[type=text]', function () {
+        var $input = $(this);
+        if ($input.val() == "") {
+            $input.val("0");
+        }
+    }).on('focus', 'input.decimal[type=text]', function () {
+        var $input = $(this);
+        if ($input.val() == "0") {
+            $input.val("");
+        }
+    });
+    //$(document).on('keydown', function (event) {
+    //    if (event.ctrlKey) {
+    //        event.preventDefault();
+    //    }
+    //    if (event.keyCode == 123) {
+    //        event.preventDefault();
+    //    }
+    //});
+</script>

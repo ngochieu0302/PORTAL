@@ -1,0 +1,79 @@
+﻿@using Microsoft.AspNetCore.Http
+@using ESCS_PORTAL.COMMON.Contants
+@using ESCS_PORTAL.COMMON.Common
+@using Newtonsoft.Json
+@using ESCS_PORTAL.MODEL.ESCS.ModelView
+@using ESCS_PORTAL.MODEL.ESCS
+@{
+    var session = Context.Request.Cookies[ESCSConstants.ESCS_TOKEN]?.ToString();
+    escs_nguoi_dung user = JsonConvert.DeserializeObject<escs_nguoi_dung>(Utilities.DecryptByKey(session, ESCS_PORTAL.COMMON.Http.AppSettings.KeyEryptData));
+
+
+    var domainName = Context.Request.Scheme + "://" + Context.Request.Host.Value.ToString().ToLower();
+    if (domainName.Contains("localhost") || domainName.Contains(ESCS_PORTAL.COMMON.Http.AppSettings.AppDomain))
+        domainName = ESCS_PORTAL.COMMON.Http.AppSettings.AppDomainLive;
+    ht_cai_dat setting = ESCS_PORTAL.Common.EscsUtils.cai_dat.Where(n => n.domain == domainName).FirstOrDefault();
+
+    var logo = "images/ESCS/ESCS_icon_white.png";
+    if (setting != null && setting.cai_dat.Count() > 0)
+    {
+        var logo_ung_dung = setting.cai_dat.Where(n => n.loai == "LOGO_WEB_APP").FirstOrDefault();
+        logo = logo_ung_dung != null && !string.IsNullOrEmpty(logo_ung_dung.url_anh) ? logo_ung_dung.url_anh : logo;
+    }
+}
+<input class="d-none" type="hidden" disabled="disabled" id="escs_ma_doi_tac" value="@user?.ma_doi_tac" />
+<input class="d-none" type="hidden" disabled="disabled" id="escs_ma_doi_tac_ql" value="@user?.ma_doi_tac_ql" />
+<input class="d-none" type="hidden" disabled="disabled" id="escs_tai_khoan" value="@user?.nsd" />
+<input class="d-none" type="hidden" disabled="disabled" id="escs_ten_nguoi_dung" value="@user?.ten" />
+<input class="d-none" type="hidden" disabled="disabled" id="escs_ma_chi_nhanh" value="@user?.ma_chi_nhanh" />
+<input class="d-none" type="hidden" disabled="disabled" id="escs_ma_chi_nhanh_ql" value="@user?.ma_chi_nhanh_ql" />
+<input class="d-none" type="hidden" disabled="disabled" id="escs_loai_kh" value="@user?.loai_kh" />
+<nav class="navbar navbar-expand bg-primary navbar-dark" style="z-index:1040;">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="/@logo" height="24" alt="@setting?.doi_tac.ten_tat" />
+            &nbsp; @setting?.doi_tac.ten_tat Portal
+        </a>
+        <ul class="navbar-nav d-flex flex-row ms-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:void(0);" id="dropdownTaiKhoan" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-lg fa-fw fa-user-circle" style="font-size: 18px;"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end border shadow rounded-0 mt-2" style="min-width: 300px; line-height: 30px; margin-right: 3px;" aria-labelledby="dropdownTaiKhoan">
+                    <li class="user-list">
+                        <a href="javascript:void(0)" class="px-3 py-2 dropdown-item fs-5 text-uppercase">
+                            Khách hàng: @user?.ten_loai_kh
+                        </a>
+                    </li>
+                    <li class="user-list">
+                        <a href="javascript:void(0)" class="px-3 py-2 dropdown-item fs-5">
+                            <i class="fas fa-fw fa-user me-2"></i>Tên tài khoản: @user?.ten
+                        </a>
+                    </li>
+                    <li class="user-list">
+                        <a href="javascript:void(0)" class="px-3 py-2 dropdown-item fs-5">
+                            <i class="fas fa-fw fa-envelope me-2"></i>Email: @user?.email
+                        </a>
+                    </li>
+                    <li class="user-list">
+                        <a href="javascript:void(0)" class="px-3 py-2 dropdown-item fs-5">
+                            <i class="fas fa-fw fa-phone me-2"></i>Điện thoại: @user?.dthoai
+                        </a>
+                    </li>
+                    <li class="user-list">
+                        <a asp-action="Index" asp-controller="AccountSetting" asp-area="" class="px-3 py-2 dropdown-item fs-5">
+                            <i class="fas fa-fw fa-cog me-2"></i>Cài đặt tài khoản
+                        </a>
+                    </li>
+                    <li class="user-list">
+                        <a href="javascript:void(0)" class="px-3 py-2 logout dropdown-item text-danger fs-5">
+                            <i class="fas fa-fw fa-power-off me-2"></i>Đăng xuất
+                        </a>
+                    </li>
+                    <li class="user-list">
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

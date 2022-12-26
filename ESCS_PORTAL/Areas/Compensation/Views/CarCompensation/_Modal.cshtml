@@ -1,0 +1,65 @@
+﻿<!-- Modal -->
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="modal top fade" id="modalXemThongTinHoSo" tabindex="-1" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false" data-mdb-modal-non-invasive="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header p-0 pe-md-3">
+                <ul class="nav nav-tabs nav-fill" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link p-3 text-primary disabled">
+                            Số hồ sơ:&nbsp;<span id="modalXemThongTinHoSoTitleSoHoSo"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link py-3 mt-1 active defaultFisrtTab"
+                           id="tab-1"
+                           data-mdb-toggle="tab"
+                           href="#CarCompensationContent1"
+                           role="tab"
+                           aria-controls="tabs-1"
+                           aria-selected="true">
+                            <i class="fa-regular fa-pen-to-square me-3"></i>Thông tin hồ sơ
+                        </a>
+                    </li>
+                    <li class="nav-item d-none" role="presentation">
+                        <a class="nav-link py-3 mt-1"
+                           id="tab-2"
+                           data-mdb-toggle="tab"
+                           href="#CarCompensationContent2"
+                           role="tab"
+                           aria-controls="tabs-2"
+                           aria-selected="false">
+                            <i class="fas fa-camera-retro me-3"></i>Tài liệu hình ảnh
+                        </a>
+                    </li>
+                </ul>
+                <button type="button" class="btn-close d-none d-md-block" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="tab-content h-100" id="CarCompensationContent">
+                    <div class="tab-pane fade h-100 show active"
+                         id="CarCompensationContent1"
+                         role="tabpanel"
+                         aria-labelledby="tab-1">
+                        <div class="container-fluid h-100 px-0">
+                            <partial name="_CarCompensationContentTab1" />
+                        </div>
+                    </div>
+                    <div class="tab-pane fade h-100"
+                         id="CarCompensationContent2"
+                         role="tabpanel"
+                         aria-labelledby="tab-2">
+                        <div class="container-fluid h-100 px-0">
+                            <partial name="_CarCompensationContentTab2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer p-2">
+                <button type="button" class="btn btn-primary" data-mdb-dismiss="modal">
+                    <i class="fa-solid fa-rectangle-xmark me-1"></i> Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

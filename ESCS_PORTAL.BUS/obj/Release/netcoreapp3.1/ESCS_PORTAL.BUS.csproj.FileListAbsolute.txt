@@ -1,0 +1,16 @@
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS_PORTAL.BUS.deps.json
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS_PORTAL.BUS.dll
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS_PORTAL.BUS.pdb
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS.DAL.dll
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.dll
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS_PORTAL.MODEL.dll
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS_PORTAL.COMMON.pdb
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS.DAL.pdb
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\bin\Release\netcoreapp3.1\ESCS_PORTAL.MODEL.pdb
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\obj\Release\netcoreapp3.1\ESCS_PORTAL.BUS.csprojAssemblyReference.cache
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\obj\Release\netcoreapp3.1\ESCS_PORTAL.BUS.AssemblyInfoInputs.cache
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\obj\Release\netcoreapp3.1\ESCS_PORTAL.BUS.AssemblyInfo.cs
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\obj\Release\netcoreapp3.1\ESCS_PORTAL.BUS.csproj.CoreCompileInputs.cache
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\obj\Release\netcoreapp3.1\ESCS_PORTAL.BUS.csproj.CopyComplete
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\obj\Release\netcoreapp3.1\ESCS_PORTAL.BUS.dll
+D:\project\ESCS_PORTAL\ESCS_PORTAL.BUS\obj\Release\netcoreapp3.1\ESCS_PORTAL.BUS.pdb

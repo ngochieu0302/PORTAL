@@ -1,0 +1,643 @@
+﻿@*TTChung*@
+<script type="text/html" id="tabThongTinChungContent_template">
+    <div class="row gx-2 gy-0">
+        <div class="col-12">
+            <span class="fs-5 text-muted text-uppercase">Thông tin hồ sơ</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày mở HSBT:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ngay_ht %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày thông báo:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ngay_tb %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Nguồn thông báo:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.nguon_tb_ten %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Sản phẩm:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ten_sp %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Gói bảo hiểm:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ten_goi_bh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Trạng thái xử lý:&nbsp;</span>
+                <%if(data.ma_trang_thai == 'HSBT_NG_BSHS'){%>
+                <span class="fw-bold" data-model="" title="">
+                    <a href="#" onclick="xemDanhSachHoSoBSCT()"><%- data.trang_thai %> <i class="fas fa-eye"></i></a>
+                </span>
+                <%}else{%>
+                <span class="fw-bold" data-model="" title="">
+                    <%- data.trang_thai %>
+                </span>
+                <%}%>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số tiền yêu cầu:&nbsp;</span>
+                <span class="fw-bold text-primary" data-model="" title=""><%- ESUtil.formatMoney(data.so_tien_yc) %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số giảm trừ:&nbsp;</span>
+                <span class="fw-bold text-danger" data-model="" title=""><%- ESUtil.formatMoney(data.so_tien_gtru) %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số tiền duyệt:&nbsp;</span>
+                <span class="fw-bold text-primary" data-model="" title=""><%- ESUtil.formatMoney(data.so_tien_duyet) %></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div id="collapseBoSung" class=" d-none">
+                <div class="table-responsive">
+                <table class="table table-bordered text-nowrap mb-0">
+                    <thead class="thead-dark bg-primary text-white">
+                        <tr>
+                            <th>STT</th>
+                            <th class="d-none">Mã tài liệu</th>
+                            <th>Giấy tờ cần bổ sung</th>
+                            <th>Người yêu cầu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="giayToBoSung_body">
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <hr class="hr" />
+            <span class="fs-5 text-muted text-uppercase">Thông tin cán bộ xử lý hồ sơ</span>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Cán bộ bồi thường:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ten_nsd_btv %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>SĐT - Email:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.email_nsd_btv %></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <hr class="hr" />
+            <span class="fs-5 text-muted text-uppercase">Thông tin khách hàng</span>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Họ và tên:&nbsp;</span>
+                <span class="fw-bold text-capitalize" data-model="" title=""><%- data.ten_khach %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số HĐBH:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.so_hd %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Đơn vị cấp:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ten_dvi_cap %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>GCN:&nbsp;</span>
+                <span class="fw-bold user-select-all" data-model="" title=""><%- data.gcn %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Tên NĐBH:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ten %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số CMT:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.so_cmt %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày sinh:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ngay_sinh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Điện thoại:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.dien_thoai %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Hiệu lực BH:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.hieu_luc %></span>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <hr class="hr" />
+            <span class="fs-5 text-muted text-uppercase">Thông tin người thông báo</span>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Họ tên:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.nguoi_tb %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>SĐT - Email:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.dthoai_nguoi_tb %></span>
+                &nbsp;-&nbsp;
+                <span class="fw-bold" data-model="" title=""><%- data.email_nguoi_tb %></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <hr class="hr" />
+            <span class="fs-5 text-muted text-uppercase">Thông tin CSYT</span>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Bệnh viện:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Nhà thuốc:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Họ tên:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.nguoi_lh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>SĐT - Email:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.dthoai_nguoi_lh %></span>
+                &nbsp;-&nbsp;
+                <span class="fw-bold" data-model="" title=""><%- data.email_nguoi_lh %></span>
+            </div>
+        </div>
+    </div>
+</script>
+
+@*TTGTBS*@
+<script type="text/html" id="giayToBoSung_body_template">
+    <% if(data.length > 0){
+    _.forEach(data, function(item,index) { %>
+        <tr>
+            <td class="text-center"><%- index+1 %></td>
+            <td class="text-center d-none"><%- item.ma_hs %></td>
+            <td><%- item.ten %></td>
+            <td class="text-center"><%- item.nsd %></td>
+        </tr>
+    <% })} %>
+    
+</script>
+
+@*TTGCN*@
+<script type="text/html" id="tabThongTinGCNContent_template">
+    <div class="row gx-2 gy-0">
+        <div class="col-12">
+            <span class="fs-5 text-muted text-uppercase">Thông tin giấy chứng nhận</span>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Họ tên:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ten %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày sinh:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ngay_sinh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Giới tính:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.gioi_tinh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Điện thoại:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.d_thoai %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số CMT:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.so_cmt %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Email:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.email %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Địa chỉ:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.dchi %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số GCN:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.gcn %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày cấp:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ngay_cap %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>	Ngày giờ hiệu lực:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ngay_hl %></span>
+                &nbsp;-&nbsp;
+                <span class="fw-bold" data-model="" title=""><%- data.gio_hl %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>	Ngày giờ kết thúc:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ngay_kt %></span>
+                &nbsp;-&nbsp;
+                <span class="fw-bold" data-model="" title=""><%- data.gio_kt %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Sản phẩm:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.ten_sp %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Gói bảo hiểm:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="<%- data.goi_bh %>"><%- data.ten_goi_bh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Đơn vị công tác:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.dvi_ctac %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Chi nhánh công tác:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.cnhanh_ctac %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Mã nhân viên:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.manv_ctac %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Chức vụ:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.cvu_ctac %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="p-2 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Phòng ban công tác:&nbsp;</span>
+                <span class="fw-bold" data-model="" title=""><%- data.pban_ctac %></span>
+            </div>
+        </div>
+
+    </div>
+</script>
+@*TTQLGCN*@
+<script type="text/html" id="tabThongTinQuyenLoiGCNContent_template">
+    <% if(data.length > 0){
+    _.forEach(data, function(item,index) { %>
+        <tr>
+            <td class="text-wrap" style="max-width:300px;"><%- item.ten_hien_thi %></td>
+            <td class="text-center"><%- item.so_lan_ngay %></td>
+            <td class="text-end"><%- ESUtil.formatMoney(item.tien_lan_ngay) %></td>
+            <td class="text-end"><%- ESUtil.formatMoney(item.tien_nam) %></td>
+            <td class="text-center"><%- item.dong_bh %> %</td>
+            <td class="text-center"><%- item.so_ngay_cho %></td>
+
+            <td class="text-center"><%- item.so_lan_ngay_duyet %></td>
+            <td class="text-end"><%- ESUtil.formatMoney(item.tien_nam_duyet) %></td>
+
+            <td class="text-center"><%- item.so_lan_ngay_con %></td>
+            <td class="text-end"><%- ESUtil.formatMoney(item.tien_nam_con) %></td>
+        </tr>
+    <% })} %>
+</script>
+@*TTHoSoGiayTo*@
+<script type="text/html" id="tabThongTinHoSoGiayToContent_template">
+    <% if(data.length > 0){
+    _.forEach(data, function(item,index) { %>
+    <tr>
+        <td class="text-wrap fw-bold" style="min-width:300px;max-width:400px;overflow:hidden;" title=""><%- item.ten %></td>
+        <td class="text-center"><%- item.ngay_bs %></td>
+        <td style="text-align: center">
+            <% if(item.trang_thai == 'C'){ %>
+            <input class="form-check-input m-0 pe-none" type="checkbox" />
+            <% }else if(item.trang_thai == 'D'){ %>
+            <input class="form-check-input m-0 pe-none" type="checkbox" checked />
+            <% } %>
+        </td>
+        <td style="text-align: center">
+            <% if(item.ngay_bs == '' || item.ngay_bs == null){ %>
+            <input class="form-check-input m-0 pe-none" type="checkbox" />
+            <% }else{ %>
+            <% if(item.hop_le == 1){ %>
+            <input class="form-check-input m-0 pe-none" type="checkbox" checked />
+            <% }else{ %>
+            <input class="form-check-input m-0 pe-none" type="checkbox" />
+            <% } %>
+            <% } %>
+        </td>
+        <td class="text-center"><%- (item.loai_ten==null||item.loai_ten=='')?'Chưa xác định':item.loai_ten %></td>
+            <% if(item.trang_thai =="C")
+            {
+            if(item.chon==1)
+            {
+            if(item.trang_thai_xoa =='K')
+            {
+            %>
+        <td style="text-align: center">
+            <input class="form-check-input m-0 pe-none" type="checkbox" checked />
+        </td>
+        <%
+        }
+        else
+        {
+        %>
+        <td style="text-align: center">
+            <input class="form-check-input m-0 pe-none" type="checkbox" checked />
+        </td>
+        <%
+        }
+        }
+        else
+        {
+        %>
+        <td style="text-align: center">
+            <input class="form-check-input m-0 pe-none" type="checkbox" />
+        </td>
+        <%}
+        }
+        else
+        {
+        %>
+        <td style="text-align: center">
+            <input class="form-check-input m-0 pe-none" type="checkbox" />
+        </td>
+        <%
+        }
+        %>
+        <td><%- item.ghi_chu %></td>
+        <td class="text-center"><%- item.nsd %></td>
+    </tr>
+    <% })} %>
+</script>
+<script type="text/html" id="tabThongTinYCBH_template">
+    <div class="table-responsive mb-2">
+        <table class="table table-bordered rounded text-nowrap mb-0">
+            <thead class="thead-dark bg-primary text-white">
+                <tr>
+                    <th scope="col">Lần khám</th>
+                    <th scope="col">Ngày vào viện</th>
+                    <th scope="col">Ngày ra viện</th>
+                    <th scope="col">Nguyên nhân</th>
+                    <th scope="col">Bệnh viện</th>
+                    <th scope="col">Nhà thuốc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(lan_kham.length > 0){
+                _.forEach(lan_kham, function(lk,index) { %>
+                    <tr>
+                        <td class="text-center"><%- lk.lan_kham_hien_thi %></td>
+                        <td class="text-center"><%- lk.ngay_vv %></td>
+                        <td class="text-center"><%- lk.ngay_rv %></td>
+                        <td class="text-center"><%- lk.ten_nguyen_nhan %></td>
+                        <td class="text-center"><%- lk.benh_vien_ten %></td>
+                        <td class="text-center"><%- lk.nha_thuoc_ten %></td>
+                    </tr>
+                <% })} %>
+                <% if(lan_kham.length < 5){
+                for(var i = 0; i < 5 - lan_kham.length;i++ ){ %>
+                    <tr>
+                        <td class="text-center">&nbsp;</td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                <% }} %>
+            </tbody>
+        </table>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered rounded text-nowrap mb-0">
+            <thead class="thead-dark bg-primary text-white">
+                <tr>
+                    <th scope="col">Quyền lợi</th>
+                    <th scope="col">Nhóm nguyên nhân</th>
+                    <th scope="col">Hình thức điều trị</th>
+                    <th scope="col">Tiền yêu cầu</th>
+                    <th scope="col">Tiền giảm trừ</th>
+                    <th scope="col">Tiền duyệt</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let tong_yc=0;let tong_giam_tru=0;let tong_duyet=0;
+                if(lan_kham_qloi.length > 0){
+                _.forEach(lan_kham_qloi, function(lkql,index) {
+                    tong_yc+=lkql.tien_yc;
+                    tong_giam_tru+=lkql.tong_tien_giam;
+                    tong_duyet+=lkql.tien_duyet; %>
+                    <tr>
+                        <td class="text-center"><%- lkql.ten_lhnv %></td>
+                        <td class="text-center"><%- lkql.ten_nguyen_nhan %></td>
+                        <td class="text-center"><%- lkql.hinh_thuc_ten %></td>
+                        <td class="text-end"><%- ESUtil.formatMoney(lkql.tien_yc) %></td>
+                        <td class="text-end"><%- ESUtil.formatMoney(lkql.tong_tien_giam) %></td>
+                        <td class="text-end"><%- ESUtil.formatMoney(lkql.tien_duyet) %></td>
+                    </tr>
+                <% })} %>
+                <% if(lan_kham_qloi.length < 6){
+                for(var i = 0; i < 6 - lan_kham_qloi.length;i++ ){ %>
+                    <tr>
+                        <td class="text-center">&nbsp;</td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-end"></td>
+                        <td class="text-end"></td>
+                        <td class="text-end"></td>
+                    </tr>
+                <% }} %>
+            </tbody>
+            <tfoot class="bg-light fw-bold">
+                <tr>
+                    <td colspan="3" class="text-center">
+                        Tổng tiền:
+                    </td>
+                    <td class="text-end text-info"><%- ESUtil.formatMoney(tong_yc) %></td>
+                    <td class="text-end text-info"><%- ESUtil.formatMoney(tong_giam_tru) %></td>
+                    <td class="text-end text-info"><%- ESUtil.formatMoney(tong_duyet) %></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</script>
+@*Thông tin tổn thất*@
+<script type="text/html" id="tabThongTinLichSuTonThat_template">
+    <div class="table-responsive h-100">
+        <table class="table table-bordered rounded text-nowrap mb-0">
+            <thead class="thead-dark bg-primary text-white">
+                <tr>
+                    <th scope="col">Ngày mở</th>
+                    <th scope="col">Số hồ sơ</th>
+                    <th scope="col">Loại</th>
+                    <th scope="col">Ngày vv</th>
+                    <th scope="col">Ngày rv</th>
+                    <th scope="col">Hình thức điều trị</th>
+                    <th scope="col">Nguyên nhân</th>
+                    <th scope="col">Quyền lợi</th>
+                    <th scope="col">Cơ sở y tế</th>
+                    <th scope="col">Tiền yêu cầu</th>
+                    <th scope="col">Tiền duyệt</th>
+                    <th scope="col">Số ngày duyệt</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Lý do giảm trừ</th>
+                    <th scope="col">Ghi chú</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let tong_yc = 0; let tong_duyet = 0
+                if(data.length > 0){
+                _.forEach(data, function(lstt,index) { 
+                    tong_yc+=lstt.so_tien_yc;
+                    tong_duyet+=lstt.so_tien_duyet;%>
+                    <tr>
+                        <td class="text-center"><%- lstt.ngay_ht %></td>
+                        <td class="text-center text-info"><%- lstt.so_hs %></td>
+                        <td class="text-center"><%- lstt.loai_ten %></td>
+                        <td class="text-center"><%- lstt.ngay_vv %></td>
+                        <td class="text-center"><%- lstt.ngay_rv %></td>
+                        <td class="text-center"><%- lstt.hinh_thuc_ten %></td>
+                        <td class="text-center"><%- lstt.ten_nguyen_nhan %></td>
+                        <td class=""><%- lstt.quyen_loi_ten %></td>
+                        <td class=""><%- lstt.ten_benh_vien %></td>
+                        <td class="text-end"><%- ESUtil.formatMoney(lstt.so_tien_yc) %></td>
+                        <td class="text-end"><%- ESUtil.formatMoney(lstt.so_tien_duyet) %></td>
+                        <td class="text-center"><%- lstt.so_ngay_duyet %></td>
+                        <td class="text-center"><%- lstt.trang_thai %></td>
+                        <td class="text-center"><%- lstt.nguyen_nhan %></td>
+                        <td class="text-center"><%- lstt.ghi_chu %></td>
+                    </tr>
+                <% })} %>
+                <% if(data.length < 14){
+                for(var i = 0; i < 14 - data.length;i++ ){ %>
+                    <tr>
+                        <td class="text-center">&nbsp;</td>
+                        <td class="text-center text-info"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="text-end"></td>
+                        <td class="text-end"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                    </tr>
+                <% }} %>
+
+            </tbody>
+            <tfoot class="bg-light fw-bold">
+                <tr>
+                    <td colspan="9" class="text-center">
+                        Tổng tiền:
+                    </td>
+                    <td class="text-end text-info"><%- ESUtil.formatMoney(tong_yc) %></td>
+                    <td class="text-end text-info"><%- ESUtil.formatMoney(tong_duyet) %></td>
+                    <td colspan="4" class="text-center"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</script>
+@*Quá trình xử lý*@
+<script type="text/html" id="tabQuaTrinhXuLyContent_template">
+    <% if(data.length > 0){
+    _.forEach(data, function(item,index) { %>
+        <div class="col-12 px-md-5">
+            <div class="card shadow-0 border">
+                <div class="card-body overflow-hidden ps-md-0">
+                    <table class="table-borderless">
+                        <tr>
+                            <th rowspan="3" class="fs-3 text-center text-muted d-none d-md-table-cell" style="min-width: 100px;">
+                                <%- data.length-index %>
+                            </th>
+                            <th class="text-nowrap">Thời gian thực hiện:&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <td><%- item.ngay %></td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap">Cán bộ thực hiện:&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <td title="<%- item.nsd %>"><%- item.ten %></td>
+                        </tr>
+                        <tr>
+                            <th class="text-nowrap" style="vertical-align: top !important;">Nội dung thực hiện:&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                            <td class="text-info">
+                                <%- item.nd %>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    <% })} %>
+</script>

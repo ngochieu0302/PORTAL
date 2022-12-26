@@ -1,0 +1,155 @@
+﻿<!-- Modal -->
+@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="modal top fade" id="modalXemThongTinHopDong" tabindex="-1" aria-labelledby="modalXemThongTinHopDongLabel" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false" data-mdb-modal-non-invasive="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header p-0 pe-md-3 d-none">
+                <ul class="nav nav-tabs nav-fill" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link py-3 mt-1 text-primary disabled">
+                            Số hợp đồng:&nbsp;<span id="modalXemThongTinHopDongTitle"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link py-3 mt-1 active defaultFisrtTab"
+                           id="tab-1"
+                           data-mdb-toggle="tab"
+                           href="#HealthClaimContent1"
+                           role="tab"
+                           aria-controls="tabs-1"
+                           aria-selected="true">
+                            <i class="fa-regular fa-pen-to-square me-3"></i>Thông tin hợp đồng
+                       </a>
+                    </li>
+                    <li class="nav-item d-none" role="presentation">
+                        <a class="nav-link py-3 mt-1"
+                           id="tab-2"
+                           data-mdb-toggle="tab"
+                           href="#HealthClaimContent2"
+                           role="tab"
+                           aria-controls="tabs-2"
+                           aria-selected="false">
+                            <i class="fas fa-camera-retro me-3"></i>Tài liệu hình ảnh
+                        </a>
+                    </li>
+                    <li class="nav-item d-none" role="presentation">
+                        <a class="nav-link py-3 mt-1"
+                           id="tab-3"
+                           data-mdb-toggle="tab"
+                           href="#HealthClaimContent3"
+                           role="tab"
+                           aria-controls="tabs-3"
+                           aria-selected="false">
+                            <i class="fas fa-list me-3"></i>Yêu cầu
+                       </a>
+                    </li>
+                </ul>
+                <button type="button" class="btn-close d-none d-md-block" data-mdb-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="tab-content h-100" id="HealthClaimContent">
+                    <div class="tab-pane fade h-100 show active"
+                            id="HealthClaimContent1"
+                            role="tabpanel"
+                            aria-labelledby="tab-1">
+                        <div class="container-fluid h-100 px-0">
+                            <partial name="_HealthClaimContentTab1" />
+                        </div>
+                    </div>
+                    <div class="tab-pane fade h-100"
+                            id="HealthClaimContent2"
+                            role="tabpanel"
+                            aria-labelledby="tab-2">
+                        <div class="container-fluid h-100 px-0">
+                            <partial name="_HealthClaimContentTab2" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer p-2">
+                <button type="button" class="btn btn-primary" data-mdb-dismiss="modal">
+                    <i class="fa-solid fa-rectangle-xmark me-1"></i> Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="modalThongTinChiTietNDBH"
+     class="modal fade"
+     data-mdb-backdrop="false"
+     data-mdb-keyboard="true"
+     tabindex="-1"
+     aria-labelledby="ThongTinChiTietNDBHLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-fullscreen-md-down modal768">
+        <div class="modal-content">
+            <div class="modal-header bg-primary py-0 pe-md-3 d-flex flex-nowrap">
+                <h5 class="modal-title text-white text-nowrap" id="ThongTinChiTietNDBHLabel">Thông tin GCN</h5>
+                <ul class="nav nav-pills flex-fill flex-nowrap text-nowrap" role="tablist">
+                    <li class="nav-item ms-auto" role="presentation">
+                        <a class="nav-link py-3 active"
+                           id="GCN-NDBH"
+                           data-mdb-toggle="pill"
+                           href="#GCN-NDBH-content"
+                           role="tab"
+                           aria-controls="GCN-NDBH-content"
+                           aria-selected="true">NĐBH</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link py-3"
+                           id="GCN-QL"
+                           data-mdb-toggle="pill"
+                           href="#GCN-QL-content"
+                           role="tab"
+                           aria-controls="GCN-QL-content"
+                           aria-selected="false">Quyền lợi</a>
+                    </li>
+                </ul>
+                <button type="button" class="btn-close btn-close-white" data-mdb-dismiss="modal" aria-label="Close">
+
+                </button>
+            </div>
+            <div class="modal-body p-0 overflow-auto">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active"
+                         id="GCN-NDBH-content"
+                         role="tabpanel"
+                         aria-labelledby="GCN-NDBH">
+                        <div class="container-fluid py-2" id="chiTietNDBH">
+                        </div>
+                    </div>
+                    <div class="tab-pane fade"
+                         id="GCN-QL-content"
+                         role="tabpanel"
+                         aria-labelledby="GCN-QL">
+                        <div class="table-responsive max-height-unset-md-400">
+                            <table class="table table-bordered text-nowrap mb-0">
+                                <thead class="thead-dark bg-primary text-white sticky-top" style="top:0.5px;">
+                                    <tr>
+                                        <th scope="col">Điều khoản</th>
+                                        <th scope="col">Số lần/ngày</th>
+                                        <th scope="col">Q.Lợi/lần/ngày</th>
+                                        <th scope="col">Q.Lợi/năm</th>
+
+                                        <th scope="col">Tỷ lệ đồng</th>
+                                        <th scope="col">T.Gian chờ</th>
+                                        <th scope="col">Phí BH</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblQuyenLoiNDBH_body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-light p-2">
+                <button type="button" class="btn btn-primary" data-mdb-dismiss="modal">
+                    <i class="fa-solid fa-rectangle-xmark me-1"></i> Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>*@

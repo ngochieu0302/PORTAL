@@ -1,0 +1,275 @@
+﻿<script type="text/html" id="tblDachSachHopDongSDBS_template">
+    <a href="javascript:void(0);" onclick="chuyenHopDong()" class="d-md-none prevHD text-muted"><i class="fas fa-arrow-left"></i></a>
+    <% if(data.length > 0){
+    _.forEach(data, function(item,index) { %>
+    <a href="javascript:void(0);" class="ESCS_HopDong text-muted" onclick="onChangeXemThongTinHopDong('<%-item.ma_doi_tac%>','<%-item.ma_doi_tac_ql%>', '<%- item.ma_chi_nhanh_ql%>', '<%- item.so_id_d%>', '<%- item.so_id%>','<%- item.ma_duy_nhat %>')" data-hd="<%- item.so_id%>"><%- item.select_text %></a>
+    <% })} %>
+    <a href="javascript:void(0);" onclick="chuyenHopDong('next')" class="d-md-none nextHD"><i class="fas fa-arrow-right"></i></a>
+    <button type="button" class="btn-close ms-auto" onclick="_multitabService.showTabByIndex(0);UpdatePageTitle(PAGE_TITLE);"></button>
+</script>
+
+<script type="text/html" id="healthInfoContract_template">
+    <div class="row gx-2 gy-0">
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Nhóm:&nbsp;</span>
+                <span class="fw-bold" data-model="loai_kh_ten" title="<%- hd.loai_kh_ten %>"><%- hd.loai_kh_ten %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày cấp:&nbsp;</span>
+                <span class="fw-bold" data-model="ngay_cap"><%- hd.ngay_cap %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Đơn vị cấp:&nbsp;</span>
+                <span class="fw-bold" data-model="ten_dvi_cap" title="<%- hd.ten_dvi_cap %>"><%- hd.ten_dvi_cap %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Phòng:&nbsp;</span>
+                <span class="fw-bold" data-model="ten_phong" title="<%- hd.ten_phong %>"><%- hd.ten_phong %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-6">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Tên khách hàng:&nbsp;</span>
+                <span class="fw-bold" data-model="ten" title="<%- hd.ten %>"><%- hd.ten %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-6">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Địa chỉ:&nbsp;</span>
+                <span class="fw-bold" data-model="dchi" title="<%- hd.dchi %>"><%- hd.dchi %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden ms-auto">
+                <span>Email:&nbsp;</span>
+                <span class="fw-bold" data-model="d_thoai" title="<%- hd.d_thoai %>"><%- hd.email %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden ms-auto">
+                <span>Số điện thoại:&nbsp;</span>
+                <span class="fw-bold" data-model="d_thoai" title="<%- hd.d_thoai %>"><%- hd.dthoai %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Hiệu lực hợp đồng:&nbsp;</span>
+                <span class="fw-bold" data-model="hieu_luc_hd"><%- hd.hieu_luc_hd %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Trạng thái:&nbsp;</span>
+                <span class="fw-bold" data-model="trang_thai_ten"><%= hd.trang_thai_ten %></span>
+            </div>
+        </div>
+        @*<div class="col-6 col-md-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Phí bảo hiểm:&nbsp;</span>
+                <span class="fw-bold text-primary" data-model="tong_phi" title="<%- hd.tong_phi %>"><%- ESUtil.formatMoney(hd.tong_phi) %></span>
+            </div>
+        </div>*@
+    </div>
+</script>
+
+<script type="text/html" id="dsGCN_body_template">
+    <% if(gcn.length > 0){
+    _.forEach(gcn, function(item,index) { %>
+    <tr onclick="xemThongTinNDBH('<%- item.so_id_dt %>')" class="so_gcn" id="so_gcn_<%- item.so_id_dt %>">
+        <td class="text-center" style="min-width:30px;"><i class="fas fa-eye text-primary"></i></td>
+        <td class="text-center"><%- index+1+offset %></td>
+        <td><%- item.ten %></td>
+        <td class="text-center"><%- item.ngay_sinh %></td>
+        <td class="text-center"><%- item.gioi_tinh %></td>
+        <td class="text-center"><%- item.so_cmt %></td>
+        <td class="text-center"><%- item.gcn %></td>
+        <td class="text-center"><%- item.d_thoai %></td>
+        <td><%- item.email %></td>
+        <td><%- item.dchi %></td>
+    </tr>
+    <% })} %>
+    <% if(gcn.length < max){
+    for(var i = 0; i < max - gcn.length;i++ ){ %>
+    <tr>
+        <td class="text-center" style="min-width:30px;">&nbsp;</td>
+        <td class="text-center"></td>
+        <td></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td class="text-center"></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <% }} %>
+</script>
+
+<script type="text/html" id="chiTietNDBH_template">
+    <% if(gcn != null){ %>
+    <div class="row gx-2 gy-0">
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <input type="hidden" name="so_id_dt" value="<%- gcn.so_id_dt %>" />
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Họ và tên:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.ten %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày sinh:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.ngay_sinh %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Giới tính:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.gioi_tinh %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số CMT/CCCD:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.so_cmt %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số điện thoại:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.d_thoai %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Email:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.email %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-6">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Địa chỉ:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.dchi %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Gói bảo hiểm:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.goi_bh %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày cấp:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.ngay_cap %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số giấy chứng nhận:&nbsp;</span>
+                <span class="fw-bold"><span><%- gcn.gcn %></span>&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Thời hạn hiệu lực:&nbsp;</span>
+                <span class="fw-bold"><%- gcn.hieu_luc %></span>
+            </div>
+        </div>
+    </div>
+    <% } %>
+</script>
+
+<script type="text/html" id="tblQuyenLoiNDBH_body_template">
+    <% if(ql.length > 0){
+    _.forEach(ql, function(item,index) { %>
+    <tr>
+        <td class="text-wrap fw-bold" style="max-width:350px;overflow:hidden;" title="<%- item.ten_hien_thi %>"><%- item.ten_hien_thi %></td>
+        <td class="text-center"><%- item.so_lan_ngay %></td>
+        <td class="text-end"><%- ESUtil.formatMoney(item.tien_lan_ngay) %></td>
+        <td class="text-end"><%- ESUtil.formatMoney(item.tien_nam) %></td>
+        <td class="text-center"><%- item.tl_phi %></td>
+        <td class="text-center"><%- item.so_ngay_cho %></td>
+        <td class="text-end"><%- ESUtil.formatMoney(item.phi) %></td>
+    </tr>
+    <% })} %>
+</script>
+
+<script type="text/html" id="healthInfoContractGCNDiv3_template">
+    <div class="row gx-2 gy-0">
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Tên NĐBH:&nbsp;</span>
+                <span class="fw-bold" data-model="ten" title="<%- gcn.loai_kh_ten %>"><%- gcn.ten %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>CMTND/CCCD:&nbsp;</span>
+                <span class="fw-bold" data-model="so_cmt"><%- gcn.so_cmt %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày sinh:&nbsp;</span>
+                <span class="fw-bold" data-model="ngay_sinh"><%- gcn.ngay_sinh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Gói bảo hiểm:&nbsp;</span>
+                <span class="fw-bold" data-model="ten_goi_bh"><%- gcn.ten_goi_bh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày hiệu lực:&nbsp;</span>
+                <span class="fw-bold" data-model="ngay_hl"><%- gcn.ngay_hl %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden ms-auto">
+                <span>Tên người mua:&nbsp;</span>
+                <span class="fw-bold" data-model="ten_khach"><%- gcn.ten_khach %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden ms-auto">
+                <span>Số hợp đồng:&nbsp;</span>
+                <span class="fw-bold" data-model="so_hd"><%- gcn.so_hd %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Điện thoại:&nbsp;</span>
+                <span class="fw-bold" data-model="d_thoai"><%- gcn.d_thoai %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Email:&nbsp;</span>
+                <span class="fw-bold" data-model="email"><%- gcn.email %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số GCN:&nbsp;</span>
+                <span class="fw-bold" data-model="gcn"><%- gcn.gcn %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-12 col-sm-12 col-lg-12">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Đơn vị cấp đơn:&nbsp;</span>
+                <span class="fw-bold" data-model="ten_dvi_cap_don"><%- gcn.ten_dvi_cap_don %></span>
+            </div>
+        </div>
+    </div>
+</script>
+
+

@@ -1,0 +1,49 @@
+﻿<nav id="sidenavMainNav"
+     class="sidenav"
+     data-mdb-mode="side"
+     data-mdb-hidden="true"
+     data-mdb-accordion="true"
+     data-mdb-content="#body-content"
+     data-mdb-scroll-container="#MainNavContent">
+    <nav class="navbar shadow-0 sticky-top">
+        <div class="container-fluid d-flex px-3">
+            <span class="navbar-brand">
+                &nbsp;
+            </span>
+        </div>
+    </nav>
+    <div id="MainNavContent" class="py-1 flex-fill">
+        <ul class="sidenav-menu">
+            <li class="sidenav-item">
+                <a class="sidenav-link text-black ps-3" href="/Contract/Health">
+                    <i class="fas fa-lg fa-fw fa-heart-pulse"></i>
+                    <span class="ms-3 fs-5">Hợp đồng con người</span>
+                </a>
+            </li>
+            <li class="sidenav-item my-1">
+                <a class="sidenav-link text-black ps-3" href="/Contract/CarContract">
+                    <i class="fas fa-lg fa-fw fa-car"></i>
+                    <span class="ms-3 fs-5">Hợp đồng xe cơ giới</span>
+                </a>
+            </li>
+            <li class="sidenav-item my-1">
+                <a class="sidenav-link text-black ps-3" href="/Compensation/HealthCompensation">
+                    <i class="fas fa-lg fa-fw fa-ambulance"></i>
+                    <span class="ms-3 fs-5">HS bồi thường con người</span>
+                </a>
+            </li>
+            <li class="sidenav-item my-1">
+                <a class="sidenav-link text-black ps-3" href="/Compensation/CarCompensation">
+                    <i class="fas fa-lg fa-fw fa-car-burst"></i>
+                    <span class="ms-3 fs-5">HS bồi thường xe ô tô</span>
+                </a>
+            </li>
+            <li class="sidenav-item my-1 d-none">
+                <a class="sidenav-link text-black ps-3 mt-auto home" asp-action="Export" asp-controller="Home" asp-area="">
+                    <i class="fas fa-lg fa-fw fa-download"></i>
+                    <span class="ms-3 fs-5">Xuất báo cáo</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

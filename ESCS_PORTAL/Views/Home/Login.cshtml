@@ -1,0 +1,90 @@
+﻿@model ESCS_PORTAL.COMMON.Auth.user_login_escs
+@using ESCS_PORTAL.MODEL.ESCS
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutLogin";
+    var domainName = Context.Request.Scheme + "://" + Context.Request.Host.Value.ToString().ToLower();
+    if (domainName.Contains("localhost") || domainName.Contains(ESCS_PORTAL.COMMON.Http.AppSettings.AppDomain))
+        domainName = ESCS_PORTAL.COMMON.Http.AppSettings.AppDomainLive;
+    ht_cai_dat setting = ESCS_PORTAL.Common.EscsUtils.cai_dat.Where(n => n.domain == domainName).FirstOrDefault();
+
+    var logo_login = "images/ESCS/ESCS_logo_blue.png";
+    if (setting != null && setting.cai_dat.Count() > 0)
+    {
+        var cai_dat_logo = setting.cai_dat.Where(n => n.loai == "LOGO_DANG_NHAP").FirstOrDefault();
+        logo_login = cai_dat_logo != null && !string.IsNullOrEmpty(cai_dat_logo.url_anh) ? cai_dat_logo.url_anh : logo_login;
+    }
+}
+<input type="hidden" name="escs_domain" value="@ViewBag.domain" />
+<div class="h-100 bg-image" style="background-image: url('images/ESCS/ESCS_login_bg.jpg');">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                <div class="card shadow opacity-90" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <div class="text-center mb-4">
+                            <img src="/@logo_login" class="img-fluid" alt="" style="width:100%;max-width:200px;" />
+                        </div>
+                        <form asp-action="Login" class="row">
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="text" asp-for="username" id="username" class="form-control" placeholder="Tài khoản" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex my-1">
+                                    <span asp-validation-for="username" class="text-danger"> </span>
+                                    <span>&nbsp;</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-outline">
+                                    <input type="password" asp-for="password" id="password" class="form-control" placeholder="Mật khẩu" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex my-1">
+                                    <span asp-validation-for="password" class="text-danger"> </span>
+                                    <span>&nbsp;</span>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex">
+                                <div class="col-6">
+                                    <img id="img-captcha" src="@Url.Action("Captcha", "Home")" />
+                                </div>
+                                <div class="col-6">
+                                    <input asp-for="captcha" autocomplete="off" class="form-control" placeholder="Captcha" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex my-1">
+                                    <span asp-validation-for="captcha" class="text-danger"> </span>
+                                    <span>&nbsp;</span>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="ms-auto my-2">
+                                    <a href="javascript:void(0)" id="toRecover" class="text-muted">
+                                        <i class="fa fa-lock me-1"></i> Quên mật khẩu
+                                    </a>
+                                </div>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block fs-5" type="submit" onclick="updateLabel()">Đăng nhập</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/lib/toastr/build/toastr.min.js"></script>
+    <script src="~/js/common/ESUtil.js"></script>
+    <script src="~/js/common/NotifyService.js"></script>
+    <script src="~/js/common/Service.js"></script>
+    <script src="~/js/common/ButtonService.js"></script>
+    <script src="~/js/common/LoginPage.js"></script>
+}
+
+

@@ -1,0 +1,501 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL\\ESCS_PORTAL.csproj": {}
+  },
+  "projects": {
+    "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.BUS\\ESCS_PORTAL.BUS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.BUS\\ESCS_PORTAL.BUS.csproj",
+        "projectName": "ESCS_PORTAL.BUS",
+        "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.BUS\\ESCS_PORTAL.BUS.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.BUS\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj"
+              },
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\ESCS_PORTAL.DAL.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\ESCS_PORTAL.DAL.csproj"
+              },
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "DeviceDetector.NET.NetCore": {
+              "target": "Package",
+              "version": "[3.9.2.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "RazorEngine.NetCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj",
+        "projectName": "ESCS_PORTAL.COMMON",
+        "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AntiVirusScanner": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.3, )"
+            },
+            "DeviceDetector.NET.NetCore": {
+              "target": "Package",
+              "version": "[3.9.2.2, )"
+            },
+            "DocumentFormat.OpenXml.DotNet.Core": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "F23.StringSimilarity": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Extensions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.ViewFeatures": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.0, )"
+            },
+            "Nancy": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
+            "RazorEngine.NetCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.1.58, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.7.1, )"
+            },
+            "System.Runtime.Caching": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\ESCS_PORTAL.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\ESCS_PORTAL.DAL.csproj",
+        "projectName": "ESCS.DAL",
+        "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\ESCS_PORTAL.DAL.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj"
+              },
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "DeviceDetector.NET.NetCore": {
+              "target": "Package",
+              "version": "[3.9.2.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.0, )"
+            },
+            "Oracle.ManagedDataAccess.Core": {
+              "target": "Package",
+              "version": "[2.19.80, )"
+            },
+            "RazorEngine.NetCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj",
+        "projectName": "ESCS_PORTAL.MODEL",
+        "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "DeviceDetector.NET.NetCore": {
+              "target": "Package",
+              "version": "[3.9.2.2, )"
+            },
+            "RazorEngine.NetCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL\\ESCS_PORTAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL\\ESCS_PORTAL.csproj",
+        "projectName": "ESCS_PORTAL",
+        "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL\\ESCS_PORTAL.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.BUS\\ESCS_PORTAL.BUS.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.BUS\\ESCS_PORTAL.BUS.csproj"
+              },
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.COMMON\\ESCS_PORTAL.COMMON.csproj"
+              },
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\ESCS_PORTAL.DAL.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.DAL\\ESCS_PORTAL.DAL.csproj"
+              },
+              "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj": {
+                "projectPath": "D:\\project\\ESCS_PORTAL\\ESCS_PORTAL.MODEL\\ESCS_PORTAL.MODEL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "DeviceDetector.NET.NetCore": {
+              "target": "Package",
+              "version": "[3.9.2.2, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[3.1.27, )"
+            },
+            "Microsoft.CodeAnalysis.Common": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.17.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "RazorEngine.NetCore": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

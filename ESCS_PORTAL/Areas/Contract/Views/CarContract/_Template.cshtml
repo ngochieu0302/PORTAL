@@ -1,0 +1,248 @@
+﻿<script type="text/html" id="tblDachSachHopDongSDBS_template">
+    <a href="javascript:void(0);" onclick="chuyenHopDong()" class="d-md-none prevHD text-muted"><i class="fas fa-arrow-left"></i></a>
+    <% if(data.length > 0){
+    _.forEach(data, function(item,index) { %>
+    <a href="javascript:void(0);" class="ESCS_HopDong text-muted" onclick="onChangeXemThongTinHopDong('<%- hd.ma_doi_tac%>','<%-  hd.ma_chi_nhanh%>', '<%- item.so_id%>','<%- item.ma_duy_nhat %>')" data-hd="<%- item.so_id%>"><%- item.select_text %></a>
+    <% })} %>
+    <a href="javascript:void(0);" onclick="chuyenHopDong('next')" class="d-md-none nextHD"><i class="fas fa-arrow-right"></i></a>
+    <button type="button" class="btn-close ms-auto" onclick="_multitabService.showTabByIndex(0);UpdatePageTitle(PAGE_TITLE);"></button>
+</script>
+
+
+<script type="text/html" id="carInfoContract_template">
+    <div class="row gx-2 gy-0">
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Mã khách hàng:&nbsp;</span>
+                <span class="fw-bold user-select-all" data-model="ma" title="<%- hd.ma %>"><%- hd.ma_kh %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày cấp:&nbsp;</span>
+                <span class="fw-bold" data-model="ngay_cap"><%- hd.ngay_cap_text %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Đơn vị cấp:&nbsp;</span>
+                <span class="fw-bold" data-model="ten_dvi_cap" title="<%- hd.ten_dvi_cap %>"><%- hd.ten_dvi_cap %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Phòng:&nbsp;</span>
+                <span class="fw-bold" data-model="ten_phong" title="<%- hd.ten_phong %>"><%- hd.ten_phong %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 col-sm-6 col-md-6">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Tên khách hàng:&nbsp;</span>
+                <span class="fw-bold" data-model="ten" title="<%- hd.ten %>"><%- hd.ten %></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6 col-sm-6 col-md-6">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Địa chỉ:&nbsp;</span>
+                <span class="fw-bold" data-model="dchi" title="<%- hd.dchi %>"><%- hd.dchi %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Email:&nbsp;</span>
+                <span class="fw-bold" data-model="email" title="<%- hd.email %>"><%- hd.email %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số điện thoại:&nbsp;</span>
+                <span class="fw-bold" data-model="d_thoai" title="<%- hd.d_thoai %>"><%- hd.dthoai %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Hiệu lực hợp đồng:&nbsp;</span>
+                <span class="fw-bold" data-model="hieu_luc_hd"><%- hd.hieu_luc_hd %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Trạng thái:&nbsp;</span>
+                <span class="fw-bold" data-model="trang_thai_ten"><%= hd.trang_thai_ten %></span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="chiTietGCN_template">
+    <div class="row gx-2 gy-0">
+        <div class="col-12 col-md-6 col-sm-6 col-lg-6">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Tên chủ xe:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.ten"><%- data.ten %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-6">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Địa chỉ:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.dchi"><%- data.dchi %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Biển xe:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.bien_xe"><%- data.bien_xe %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số khung:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.so_khung"><%- data.so_khung %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số máy:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.so_may"><%- data.so_may %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Sản phẩm:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.loai_ten"><%- data.loai_ten %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Hãng xe:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.hang_xe"><%- data.hang_xe %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Hiệu xe:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.hieu_xe"><%- data.hieu_xe %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Năm sản xuất:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.nam_sx"><%- data.nam_sx %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Mục đích sử dụng:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.md_sd"><%- data.md_sd %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số người tham gia BH:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.so_nguoi_bh"><%- data.so_nguoi_bh %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số chỗ:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.so_cho"><%- data.so_cho %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số lái phụ xe:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.so_lphu_xe"><%- data.so_lphu_xe %></span>
+            </div>
+        </div>
+        <div class="col-6 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Trọng tải:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.trong_tai"><%- data.trong_tai %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Số giấy chứng nhận:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.gcn"><%- data.gcn %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Ngày cấp:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.ngay_cap"><%- data.ngay_cap %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-sm-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Hiệu lực:&nbsp;</span>
+                <span class="fw-bold" data-model="" title="data.hieu_luc_gcn"><%- data.hieu_luc_gcn %></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="py-1 d-flex flex-nowrap text-nowrap overflow-hidden">
+                <span>Giá trị xe:&nbsp;</span>
+                <span class="fw-bold text-primary" data-model="" title="data.gia_tri"><%- ESUtil.formatMoney(data.gia_tri) %></span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="dsGCN_body_template">
+    <% if(gcn.length > 0){
+    _.forEach(gcn, function(item,index) { %>
+        <tr onclick="xemThongTinGCN('<%- item.so_id_dt %>')" class="so_gcn" id="so_gcn_<%- item.so_id_dt %>" style="cursor:pointer;">
+            <td class="text-center" style="min-width:30px;"><i class="fas fa-eye text-primary"></i></td>
+            <td class="text-center"><%- index+1+offset %></td>
+            <td><%- item.ten %></td>
+            <td class="text-center"><%- item.gcn %></td>
+            <td class="text-center"><%- item.bien_xe %></td>
+            <td class="text-center"><%- item.so_khung %></td>
+            <td class="text-center"><%- item.so_may %></td>
+            <td class="text-center"><%- item.loai_ten %></td>
+            <td><%- item.dchi %></td>
+        </tr>
+    <% })} %>
+    <% if(gcn.length < max){
+    for(var i = 0; i < max - gcn.length;i++ ){ %>
+        <tr>
+            <td class="text-center" style="min-width:30px;">&nbsp;</td>
+            <td class="text-center"></td>
+            <td></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td></td>
+            <td></td>
+        </tr>
+    <% }} %>
+</script>
+
+<script type="text/html" id="tblDK_body_template">
+    <% 
+    let tong_tien = 0;
+    let tong_tien_toi_da = 0;
+    let tong_mien_thuong = 0;
+    let tong_phi = 0;
+    if(data.length > 0){
+    _.forEach(data, function(item,index) { 
+        tong_tien += item.tien;
+        tong_tien_toi_da += item.tien_toi_da;
+        tong_mien_thuong += item.mien_thuong;
+        tong_phi += item.phi; %>
+        <tr>
+        <td class="text-center"><%- index + 1 %></td>
+        <td><%- item.ten %></td>
+        <td class="text-end"><%- ESUtil.formatMoney(item.tien) %></td>
+        @*<td class="text-end"><%- ESUtil.formatMoney(item.tien_toi_da) %></td>*@
+        <td class="text-end"><%- ESUtil.formatMoney(item.mien_thuong) %></td>
+        <td class="text-center"><%- item.dkbs == null ? '' : item.dkbs %></td>
+        <td class="text-end"><%- ESUtil.formatMoney(item.phi) %></td>
+        </tr>
+    <% })} 
+    document.getElementById('tong_tien').innerHTML = ESUtil.formatMoney(tong_tien);
+    @*document.getElementById('tong_tien_toi_da').innerHTML = ESUtil.formatMoney(tong_tien_toi_da);*@
+    document.getElementById('tong_mien_thuong').innerHTML = ESUtil.formatMoney(tong_mien_thuong);
+    document.getElementById('tong_phi').innerHTML = ESUtil.formatMoney(tong_phi);
+    %>
+</script>

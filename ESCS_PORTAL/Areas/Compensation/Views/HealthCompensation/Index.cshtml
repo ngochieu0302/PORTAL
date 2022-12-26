@@ -1,0 +1,111 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Bồi thường sức khỏe con người";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*@section PageTitle{
+    <nav class="ms-auto text-nowrap d-none d-md-block fs-5" aria-label="breadcrumb">
+        <ol class="breadcrumb flex-nowrap">
+            <li class="breadcrumb-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="text-primary">Trang chủ</a></li>
+            <li class="breadcrumb-item text-themecolor">Bồi thường sức khỏe con người</li>
+        </ol>
+    </nav>
+}*@
+
+<div class="container-fluid h-100 overflow-auto d-flex flex-column gap-2 py-2">
+    <div id="divThongTinTKiemHoSoNguoi" class="card h-100 shadow">
+        <div class="card-body d-flex flex-column">
+            <form name="frmTimKiem" method="post" novalidate="novalidate">
+                <div class="row">
+                    <div class="col-6 col-md-2 col-xxl-2 mb-2">
+                        <div class="form-outline datepicker" data-mdb-inline="true" data-mdb-format="dd/mm/yyyy">
+                            <input type="text" class="form-control" name="ngay_d" value-format="number" />
+                            <label class="form-label">Từ ngày</label>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-2 col-xxl-2 mb-4">
+                        <div class="form-outline datepicker" data-mdb-inline="true" data-mdb-format="dd/mm/yyyy">
+                            <input type="text" class="form-control" name="ngay_c" value-format="number" />
+                            <label class="form-label">Đến ngày</label>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-xxl-2 mb-4">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" name="so_hs" />
+                            <label class="form-label">Số hồ sơ bồi thường</label>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3 col-xxl-3 mb-4">
+                        <div class="form-outline">
+                            <input type="text" class="form-control" name="nd_tim" />
+                            <label class="form-label">Tên khách hàng, Số CMTND/CCCD, Số HĐ, GCN</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-2 col-xxl-3 mb-4 ms-auto">
+                        <div class="row">
+                            <div class="col-12 col-xxl-6 ms-auto">
+                                <button type="button" class="btn btn-primary btn-block" id="btnTimKiem">
+                                    <i class="fas fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <div class="flex-fill overflow-hidden" style="height:0;">
+                <div id="tblHoSoConNguoi" class="h-100 datatable-sm">
+                </div>
+            </div>
+            <div class="d-flex pt-3">
+                <span class="me-3 text-nowrap"><span id="tong_so_dong"></span> kết quả | <span id="tong_so_trang"></span> trang.</span>
+                <button class="btn btn-secondary btn-sm mx-2" onclick="loadPage()"><i class="fas fa-arrow-left"></i></button>
+                <select id="selectPhanTrang"></select>
+                <button class="btn btn-secondary btn-sm mx-2" onclick="loadPage('next')"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <partial name="_HealthCompensationContentTab1.cshtml" />
+    <partial name="_HealthCompensationContentTab2.cshtml" />
+</div>
+
+
+@*<partial name="_Modal.cshtml" />*@
+<partial name="_Template.cshtml" />
+@section Scripts{
+    <script>
+        const collapse1 = document.getElementById("tab1LeftMenu");
+        const collapse2 = document.getElementById("tab2LeftMenu");
+        const collapse1Instance = new mdb.Collapse(collapse1);
+        const collapse2Instance = new mdb.Collapse(collapse2);
+        let scrWidth = null;
+        const setCollapse = (e = false) => {
+            if (e && window.innerWidth < 992) {
+                collapse1Instance.hide();
+                collapse2Instance.hide();
+            }
+            // Check necessary for Android devices
+            if (window.innerWidth === scrWidth) {
+                return;
+            }
+            scrWidth = window.innerWidth;
+            //lg
+            if (window.innerWidth >= 992) {
+                collapse1Instance.show();
+                collapse2Instance.show();
+                return;
+            }
+            //md
+            collapse1Instance.hide();
+            collapse2Instance.hide();
+        };
+        window.addEventListener("resize", setCollapse);
+        setCollapse();
+    </script>
+    <script src="~/js/app/Admin/service/PartnerListService.js" asp-append-version="true"></script>
+    <script src="~/js/app/Admin/service/BranchListService.js" asp-append-version="true"></script>
+    <script src="~/js/app/Compensation/service/HealthCompensationService.js" asp-append-version="true"></script>
+    <script src="~/js/app/Compensation/HealthCompensation.js" asp-append-version="true"></script>
+
+}

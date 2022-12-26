@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery-form-serializer@1.2.0",
+      "destination": "wwwroot/lib/jquery-form-serializer/"
+    },
+    {
+      "library": "jquery-serialize-object@2.5.0",
+      "destination": "wwwroot/lib/jquery-serialize-object/"
+    },
+    {
+      "library": "font-awesome@6.2.0",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "viewerjs@1.10.5",
+      "destination": "wwwroot/lib/viewerjs/"
+    }
+  ]
+}

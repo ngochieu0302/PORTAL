@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Cài đặt tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="vh-100" style="background-color: #eef5f9">
+    <div class="container pt-5 h-100">
+        <div class="row d-flex justify-content-center h-100 pt-md-5">
+            <div class="col-12 col-lg-8 col-xl-6">
+                <div class="card shadow-2-strong">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Đặt lại mật khẩu</h5>
+                        <form name="frmChangePass" method="post" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-12 my-2">
+                                    <div class="form-outline">
+                                        <input type="password" name="pas_cu" autocomplete="off" class="form-control form-control-lg" required />
+                                        <label class="form-label _required">Mật khẩu cũ</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 my-2">
+                                    <div class="form-outline">
+                                        <input type="password" name="pas_moi" autocomplete="off" class="form-control form-control-lg" required />
+                                        <label class="form-label _required">Mật khẩu mới</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-2 mb-2">
+                                    <div class="form-outline">
+                                        <input type="password" name="pas_nhap_lai" autocomplete="off" class="form-control form-control-lg" required />
+                                        <label class="form-label _required">Nhập lại mật khẩu mới</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <small id="re_input_error" class="form-text text-danger" style="display:none;">Mật khẩu mới không trùng khớp</small>
+                                </div>
+                                <div class="col-12 mt-2 text-end">
+                                    <button type="button" class="btn btn-lg btn-primary px-3 ms-auto" id="changePass"><i class="fas fa-unlock-alt me-2"></i>Lưu</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
